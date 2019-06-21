@@ -9,7 +9,7 @@ To enable the apps, additional lines added to environment config shot_step.yml u
       hook_post_playblast: default
       hook_setup_window: default
       location: {name: tk-cinema-playblast, type: manual, version: v0.1.0}
-      template_work: cinema_shot_work
+      template_shot_work: cinema_shot_work
       template_shot: cinema_shot_playblast
       template_sequence: cinema_sequence_playblast
 

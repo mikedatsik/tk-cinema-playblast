@@ -42,17 +42,26 @@ class PostPlayblast(Hook):
         if action == "copy_file":
             try:
                 # get all required template
-                template_work = app.get_template("template_work")
-                template_shot = app.get_template("template_shot")
-                template_sequence = app.get_template("template_sequence")
+                shot_check = None
+                if 'Shot' in app.context.entity.get('type'):
+                    shot_check = True
+                    template_in = app.get_template("template_shot_work")
+                    template_out = app.get_template("template_shot")
+                    template_sequence = app.get_template("template_sequence")
+
+                else:
+                    template_in = app.get_template("template_asset_work")
+                    template_out = app.get_template("template_asset")
                 # use current scene name to create valid QT file names
                 
                 doc = c4d.documents.GetActiveDocument()
                 scenename = doc[c4d.DOCUMENT_FILEPATH]
-                fields = template_work.get_fields(scenename)
-
-                destination = [template_shot.apply_fields(fields), 
-                               template_sequence.apply_fields(fields)]
+                fields = template_in.get_fields(scenename)
+                if shot_check:
+                    destination = [template_out.apply_fields(fields), 
+                                template_sequence.apply_fields(fields)]
+                else:
+                    destination = [template_out.apply_fields(fields)]                   
                 # make sure that destination folder is exists
 
                 for each in destination:

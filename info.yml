@@ -1,22 +1,39 @@
 # expected fields in the configuration file for this engine
 configuration:
 
-    template_work:
+    template_shot_work:
         type: template
         required_fields: []
         optional_fields: "*"
+        default_value: cinema_shot_work
         description: "Template defining the output location of the work in shots file on the artist local file system."
+
+    template_asset_work:
+        type: template
+        required_fields: []
+        optional_fields: "*"
+        default_value: cinema_asset_work
+        description: "Template defining the output location of the work in shots file on the artist local file system."        
     
     template_shot:
         type: template
         required_fields: []
         optional_fields: "*"
+        default_value: cinema_shot_playblast
         description: "Template defining the primary output location of shot movie files on the main storage file system."
+
+    template_asset:
+        type: template
+        required_fields: []
+        optional_fields: "*"
+        default_value: cinema_asset_playblast
+        description: "Template defining the primary output location of shot movie files on the main storage file system."        
     
     template_sequence:
         type: template
         required_fields: []
         optional_fields: "*"
+        default_value: cinema_sequence_playblast
         description: "Template defining the secondary output location of sequence movie files on the main storage file system. The content is duplicate from shots"
     
     hook_post_playblast:

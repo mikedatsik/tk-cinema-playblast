@@ -57,4 +57,5 @@ class PlayblastDialog(QtGui.QWidget):
         percentInt = self._ui.cmbPercentage.itemData( self._ui.cmbPercentage.currentIndex() )
         overridePlayblastParams["percent"] = percentInt
         self._handler.doPlayblast(**overridePlayblastParams)
+        self.close()
 
